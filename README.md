@@ -44,8 +44,7 @@ Brief answers to 7 commonly asked SQL interview questions.
 ---
 
 ## 📂 Files Included
-- `SQL_Analysis_Task3.sql` – SQL scripts
+- `Data_Analysis_with_SQL` – SQL scripts
 - `README.md` – this file
-- `*.png` – screenshot visuals of query outputs
 
 ---
