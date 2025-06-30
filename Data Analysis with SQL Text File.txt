@@ -1,0 +1,146 @@
+CREATE TABLE ecommerce_data (
+    `CID` INTEGER,
+    `TID` INTEGER,
+    `Gender` TEXT,
+    `Age Group` TEXT,
+    `Purchase Date` TEXT,
+    `Product Category` TEXT,
+    `Discount Availed` TEXT,
+    `Discount Name` TEXT,
+    `Discount Amount (INR)` FLOAT,
+    `Gross Amount` FLOAT,
+    `Net Amount` FLOAT,
+    `Purchase Method` TEXT,
+    `Location` TEXT
+);
+
+
+
+🔹 1. Total Sales (Net Amount) by Product Category
+sql
+Copy
+Edit
+SELECT 
+    `Product Category`, 
+    SUM(`Net Amount`) AS Total_Sales
+FROM 
+    ecommerce_data
+GROUP BY 
+    `Product Category`
+ORDER BY 
+    Total_Sales DESC;
+
+
+
+🔹 2. Average Discount Amount by Location
+sql
+Copy
+Edit
+SELECT 
+    `Location`, 
+    AVG(`Discount Amount (INR)`) AS Avg_Discount
+FROM 
+    ecommerce_data
+GROUP BY 
+    `Location`
+ORDER BY 
+    Avg_Discount DESC;
+
+
+
+🔹 3. Total Number of Transactions by Age Group
+sql
+Copy
+Edit
+SELECT 
+    `Age Group`, 
+    COUNT(DISTINCT `TID`) AS Total_Transactions
+FROM 
+    ecommerce_data
+GROUP BY 
+    `Age Group`;
+
+
+
+🔹 4. Average Revenue per User (ARPU)
+sql
+Copy
+Edit
+SELECT 
+    ROUND(SUM(`Net Amount`) / COUNT(DISTINCT `CID`), 2) AS ARPU
+FROM 
+    ecommerce_data;
+
+
+
+🔹 5. Customers Who Availed Discounts More Than 5 Times
+sql
+Copy
+Edit
+SELECT 
+    `CID`, 
+    COUNT(*) AS Discount_Count
+FROM 
+    ecommerce_data
+WHERE 
+    `Discount Availed` = 'Yes'
+GROUP BY 
+    `CID`
+HAVING 
+    Discount_Count > 5
+ORDER BY 
+    Discount_Count DESC;
+
+
+
+🔹 6. Top 5 Cities by Gross Sales
+sql
+Copy
+Edit
+SELECT 
+    `Location`, 
+    SUM(`Gross Amount`) AS Gross_Sales
+FROM 
+    ecommerce_data
+GROUP BY 
+    `Location`
+ORDER BY 
+    Gross_Sales DESC
+LIMIT 5;
+
+
+
+🔹 7. Subquery: Customers with Above-Average Net Spending
+sql
+Copy
+Edit
+SELECT 
+    `CID`, 
+    SUM(`Net Amount`) AS Total_Spent
+FROM 
+    ecommerce_data
+GROUP BY 
+    `CID`
+HAVING 
+    Total_Spent > (
+        SELECT AVG(`Net Amount`) FROM ecommerce_data
+    );
+
+
+
+🔹 8. Create a View: Summary by Gender and Age Group
+sql
+Copy
+Edit
+CREATE VIEW gender_age_summary AS
+SELECT 
+    `Gender`, 
+    `Age Group`, 
+    COUNT(*) AS Total_Transactions,
+    AVG(`Net Amount`) AS Avg_Spending
+FROM 
+    ecommerce_data
+GROUP BY 
+    `Gender`, `Age Group`;
+
+
