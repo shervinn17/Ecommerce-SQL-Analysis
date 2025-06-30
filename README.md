@@ -1,5 +1,5 @@
 
-# Task 3: SQL for Data Analysis
+# Data Analysis with SQL
 
 ## 🎯 Objective
 Analyze an ecommerce dataset using SQL queries to extract insights and demonstrate data analysis skills.
