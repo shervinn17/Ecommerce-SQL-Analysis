@@ -30,10 +30,6 @@ Contains queries using:
 - Views
 - `HAVING` clause for filtering grouped results
 
-
-### ✅ Interview Questions
-Brief answers to 7 commonly asked SQL interview questions.
-
 ---
 
 ## 📂 Files Included
