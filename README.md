@@ -18,7 +18,6 @@ The dataset contains 55,000 ecommerce transactions with columns like:
 ## 🛠️ Tools Used
 - SQL (SQLite)
 - Python (for preprocessing and preview)
-- Sample Screenshots (for visual representation of query outputs)
 
 ---
 
@@ -31,12 +30,6 @@ Contains queries using:
 - Views
 - `HAVING` clause for filtering grouped results
 
-### ✅ Sample Screenshots
-Simulated outputs showing:
-- Total Sales by Product Category
-- Average Revenue per User (ARPU)
-- Top 5 Cities by Gross Sales
-- Customers with Above-Average Spending
 
 ### ✅ Interview Questions
 Brief answers to 7 commonly asked SQL interview questions.
